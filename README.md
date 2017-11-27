@@ -42,7 +42,7 @@ const viridisColorscale = ["#fafa6e", "#9cdf7c", "#4abd8c", "#00968e", "#106e7c"
 
 ### `<Colorscale />`
 
-Generates a single color scale palette and can take these `props`:
+`<Colorscale />` generates a single color scale palette:
 
 | `prop`         | Description                                                                                | 
 | -------------- | ------------------------------------------------------------------------------------------ |
@@ -55,7 +55,7 @@ Generates a single color scale palette and can take these `props`:
 
 ### `<ColorscalePicker />`
 
-Generates a UI panel for choosing a color scale and can take these `props`:
+`<ColorscalePicker />` generates a UI panel for selecting a color scale palette:
 
 | `prop`         | Description                                                                                | 
 | -------------- | ------------------------------------------------------------------------------------------ |
