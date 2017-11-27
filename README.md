@@ -1,64 +1,73 @@
-# React NPM library starter kit
+# React colorscales
 
-[![Build Status](https://travis-ci.org/UdiliaInc/create-react-library.svg?branch=master)](https://travis-ci.org/UdiliaInc/create-react-library)
-[![Dependencies](https://img.shields.io/david/udiliaInc/create-react-library.svg)]()
-[![Dev Dependencies](https://img.shields.io/david/dev/udiliaInc/create-react-library.svg)]()
+A React UI component for picking and modifying colorscales, based on [Chroma-js](https://gka.github.io/chroma.js/).
 
-based on Facebook's <a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create react app</a>
+### Demo
 
-## Converted to custom setup
+👉 http://react-colorscales.getforge.io/
 
-Moved all dependencies to dev dependencies because we don't need extra dependencies for our library after build, but we want all this features while developing one: 
+👉 [Demo source code](https://github.com/plotly/react-colorscales-demo-app)
 
-* Compile SCSS to css
-* React, JSX, ES6, and Flow syntax support.
-* Language extras beyond ES6 like the object spread operator.
-* A dev server that lints for common errors.
-* Import CSS and image files directly from JavaScript.
-* Autoprefixed CSS, so you don’t need `-webkit` or other prefixes.
-* A `build` script to bundle JS, CSS, and images for production.
+### 🚗 Quick Start
 
-## Getting Started
+`npm install react-colorscales` or `yarn add react-colorscales`
 
-Clone repo
+```
+import {Colorscale} from 'react-colorscales';
+import ColorscalePicker from 'react-colorscales';
 
-````
-git clone https://github.com/udiliaInc/create-react-library.git
-````
+const viridisColorscale = ["#fafa6e", "#9cdf7c", "#4abd8c", "#00968e", "#106e7c", "#2a4858"];
 
-Install dependencies
+// Show a single colorscale
 
-`npm install` or `yarn install`
+<Colorscale
+    colorscale={viridisColorscale}
+    onClick={() => {}}
+    width={150}
+/>
 
-Start development server
+// Show the colorscale picker with a default colorscale
 
-`npm start` or `yarn start`
+<ColorscalePicker 
+    onChange={this.onChange}
+    colorscale={viridisColorscale}
+/>
+```
 
-Runs the demo app in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### API
 
-## Library files
+`<Colorscale />` generates a single color scale palette and can take these `props`:
 
-All library files are located inside `src/lib`  
+| `prop`         | Description                                                                                | 
+| -------------- | ------------------------------------------------------------------------------------------ |
+| `onClick`      | Function to be called when colorscale is clicked.                                          |
+| `colorscale`   | Colorscale as an array of color strings (HEX or RGB). See Quick Start above.               |
+| `width`        | Optional: Width of an individual color swatch. Defaults to 20px.                           |
+| `maxWidth`     | Optional: Maximum width of colorscale palette. If set, `maxWidth` overrides swatch `width`. |
+| `label`        | Optional: Label positioned on the left side of color scale palette                         |
 
-## Demo app
+`<ColorscalePicker />` generates a UI panel for choosing a color scale and can take these `props`:
 
-Is located inside `src/demo` directory, here you can test your library while developing
+| `prop`         | Description                                                                                | 
+| -------------- | ------------------------------------------------------------------------------------------ |
+| `onChange`     | Passes back a new color scale when a scale is chosen or modified.                          |
+| `colorscale`   | Default colorscale as an array of color strings (HEX or RGB). See Quick Start above.       |
+| `nSwatches`    | Optional: Number of discrete colors or "swatches" in the default color scale.              |
 
-## Testing
+### Features
 
-`npm run test` or `yarn run test`
+- Preloaded with ColorBrewer, cmocean, and cube helix color scales
+- Log color scales
+- Set custom scale breakpoints
+- Set the number of discrete colors ("swatches") in a color scale
 
-## Build library
+### Screenshots
 
-`npm run build` or `yarn run build`
+![react-colorscales-screenshot](https://github.com/plotly/react-colorscale-picker/raw/master/screenshot.png)
 
-Produces production version of library under the `build` folder.
+### Credit
 
-## Publish library
-
-`npm publish`
-
-## Example library built with this starter kit
-
-https://github.com/UdiliaInc/react-under-construction
+- Cynthia Brewer's (ColorBrewer)[http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3] colorscales
+- Kristen Thyng's (cmocean)[http://matplotlib.org/cmocean/] color scales
+- Dave Green's (cube helix)(https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) color scales
+- Gregor Aisch's (chroma-js)[https://github.com/gka/chroma.js/] for easy access and modificaiton of aforementioned color scales in JavaScript.
