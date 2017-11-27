@@ -2,19 +2,19 @@
 
 A React UI component for picking and modifying colorscales, based on [Chroma-js](https://gka.github.io/chroma.js/).
 
-### Demo
+## Demo
 
-👉 http://react-colorscales.getforge.io/
+👉 [DEMO](http://react-colorscales.getforge.io/)
 
 👉 [Demo source code](https://github.com/plotly/react-colorscales-demo-app)
 
-### Install
+## Install
 
 `npm install react-colorscales`
 
 `yarn add react-colorscales`
 
-### 🚗 Quick Start
+## 🚗 Quick Start
 
 ```
 import {Colorscale} from 'react-colorscales';
@@ -38,9 +38,9 @@ const viridisColorscale = ["#fafa6e", "#9cdf7c", "#4abd8c", "#00968e", "#106e7c"
 />
 ```
 
-### API
+## API
 
-#### <Colorscale />
+### `<Colorscale />`
 
 Generates a single color scale palette and can take these `props`:
 
@@ -53,7 +53,7 @@ Generates a single color scale palette and can take these `props`:
 | `label`        | Optional: Label positioned on the left side of color scale palette                         |
 
 
-#### <ColorscalePicker />
+### `<ColorscalePicker />`
 
 Generates a UI panel for choosing a color scale and can take these `props`:
 
@@ -65,18 +65,18 @@ Generates a UI panel for choosing a color scale and can take these `props`:
 
 See the [demo app source code](https://github.com/plotly/react-colorscales-demo-app/blob/master/src/App.js) for an example of importing and using these components.
 
-### Features
+## Features
 
 - Preloaded with ColorBrewer, cmocean, and cube helix color scales
 - Log color scales
 - Set custom scale breakpoints
 - Set the number of discrete colors ("swatches") in a color scale
 
-### Screenshots
+## Screenshots
 
 ![react-colorscales-screenshot](https://github.com/plotly/react-colorscale-picker/raw/master/screenshot.png)
 
-### Credit
+## Credit
 
 - Cynthia Brewer's (ColorBrewer)[http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3] colorscales
 - Kristen Thyng's (cmocean)[http://matplotlib.org/cmocean/] color scales
