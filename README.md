@@ -1,4 +1,4 @@
-# React colorscales
+# React colorscales 🌈
 
 A React UI component for picking and modifying colorscales, based on [Chroma-js](https://gka.github.io/chroma.js/).
 
