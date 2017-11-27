@@ -8,9 +8,13 @@ A React UI component for picking and modifying colorscales, based on [Chroma-js]
 
 👉 [Demo source code](https://github.com/plotly/react-colorscales-demo-app)
 
-### 🚗 Quick Start
+### Install
 
-`npm install react-colorscales` or `yarn add react-colorscales`
+`npm install react-colorscales`
+
+`yarn add react-colorscales`
+
+### 🚗 Quick Start
 
 ```
 import {Colorscale} from 'react-colorscales';
@@ -36,7 +40,9 @@ const viridisColorscale = ["#fafa6e", "#9cdf7c", "#4abd8c", "#00968e", "#106e7c"
 
 ### API
 
-`<Colorscale />` generates a single color scale palette and can take these `props`:
+#### <Colorscale />
+
+Generates a single color scale palette and can take these `props`:
 
 | `prop`         | Description                                                                                | 
 | -------------- | ------------------------------------------------------------------------------------------ |
@@ -46,13 +52,18 @@ const viridisColorscale = ["#fafa6e", "#9cdf7c", "#4abd8c", "#00968e", "#106e7c"
 | `maxWidth`     | Optional: Maximum width of colorscale palette. If set, `maxWidth` overrides swatch `width`. |
 | `label`        | Optional: Label positioned on the left side of color scale palette                         |
 
-`<ColorscalePicker />` generates a UI panel for choosing a color scale and can take these `props`:
+
+#### <ColorscalePicker />
+
+Generates a UI panel for choosing a color scale and can take these `props`:
 
 | `prop`         | Description                                                                                | 
 | -------------- | ------------------------------------------------------------------------------------------ |
 | `onChange`     | Passes back a new color scale when a scale is chosen or modified.                          |
 | `colorscale`   | Default colorscale as an array of color strings (HEX or RGB). See Quick Start above.       |
 | `nSwatches`    | Optional: Number of discrete colors or "swatches" in the default color scale.              |
+
+See the [demo app source code](https://github.com/plotly/react-colorscales-demo-app/blob/master/src/App.js) for an example of importing and using these components.
 
 ### Features
 
