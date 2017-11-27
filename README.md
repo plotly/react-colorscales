@@ -78,7 +78,7 @@ See the [demo app source code](https://github.com/plotly/react-colorscales-demo-
 
 ## Credit
 
-- Cynthia Brewer's (ColorBrewer)[http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3] colorscales
-- Kristen Thyng's (cmocean)[http://matplotlib.org/cmocean/] color scales
-- Dave Green's (cube helix)(https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) color scales
-- Gregor Aisch's (chroma-js)[https://github.com/gka/chroma.js/] for easy access and modificaiton of aforementioned color scales in JavaScript.
+- Cynthia Brewer's [ColorBrewer](http://colorbrewer2.org/) colorscales
+- Kristen Thyng's [cmocean](http://matplotlib.org/cmocean/) color scales
+- Dave Green's [cube helix](https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) color scales
+- Gregor Aisch's [chroma-js](https://github.com/gka/chroma.js/) for easy access and modificaiton of aforementioned color scales in JavaScript.
