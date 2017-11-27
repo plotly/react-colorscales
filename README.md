@@ -16,7 +16,7 @@ A React UI component for picking and modifying colorscales, based on [Chroma-js]
 
 ## 🚗 Quick Start
 
-```
+```js
 import {Colorscale} from 'react-colorscales';
 import ColorscalePicker from 'react-colorscales';
 
