@@ -1,8 +1,8 @@
-import Example from './components/Example';
-import SecondExample from './components/SecondExample';
+import Colorscale from './components/Colorscale';
+import ColorscalePicker from './components/ColorscalePicker';
 
-export default Example;
+export default ColorscalePicker;
 export {
-  SecondExample
+  Colorscale
 };
 

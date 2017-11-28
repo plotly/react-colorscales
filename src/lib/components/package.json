@@ -1,0 +1,5 @@
+{
+    "private": true,
+    "name": "ColorscalePicker",
+    "main": "./ColorscalePicker.js"
+}
