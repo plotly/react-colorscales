@@ -271,13 +271,15 @@ export default class ColorscalePicker extends Component {
                                    }
                                </div>
                            }
-                           <Slider
-                               min={1}
-                               max={100}
-                               defaultValue={this.state.nSwatches}
-                               handle={this.handle}
-                               onAfterChange={this.updateSwatchNumber}
-                           />
+                           {this.props.fixSwatches !== true &&
+                               <Slider
+                                   min={1}
+                                   max={100}
+                                   defaultValue={this.state.nSwatches}
+                                   handle={this.handle}
+                                   onAfterChange={this.updateSwatchNumber}
+                               />
+                           }
                         </div>
                         {this.state.colorscaleType === 'cubehelix' &&
                         <div>
