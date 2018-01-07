@@ -243,10 +243,12 @@ export default class ColorscalePicker extends Component {
                     </div>
                     <div className='colorscaleControlPanel'>
                         <div>
-                           <div className='noWrap inlineBlock'>
-                               <span className='textLabel spaceRight'>Swatches:</span>
-                               <span className='textLabel spaceRight'>{this.state.nSwatches}</span>
-                           </div>
+                           {!this.props.fixSwatches &&
+                               <div className='noWrap inlineBlock'>
+                                   <span className='textLabel spaceRight'>Swatches:</span>
+                                   <span className='textLabel spaceRight'>{this.state.nSwatches}</span>
+                               </div>
+                           }
                            {SCALES_WITHOUT_LOG.indexOf(this.state.colorscaleType) < 0 &&
                                <div className='noWrap inlineBlock alignTop'>
                                    <span className='textLabel spaceRight spaceLeft'>Log scale</span>
