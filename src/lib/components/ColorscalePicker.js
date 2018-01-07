@@ -51,10 +51,10 @@ export default class ColorscalePicker extends Component {
         const { value, dragging, index, ...restProps } = props;
         return (
                 <Tooltip
-                    prefixCls="rc-slider-tooltip"
+                    prefixCls='rc-slider-tooltip'
                     overlay={value}
                     visible={dragging}
-                    placement="top"
+                    placement='top'
                     key={index}
                 >
                     <Handle value={value} {...restProps} />
@@ -251,9 +251,9 @@ export default class ColorscalePicker extends Component {
                                <div className='noWrap inlineBlock alignTop'>
                                    <span className='textLabel spaceRight spaceLeft'>Log scale</span>
                                    <input 
-                                       type="checkbox" 
-                                       name="log" 
-                                       value="log" 
+                                       type='checkbox'
+                                       name='log'
+                                       value='log'
                                        onChange={this.toggleLog} 
                                        defaultChecked={this.state.log} 
                                        className='spaceRightZeroTop alignMiddle'
@@ -262,8 +262,8 @@ export default class ColorscalePicker extends Component {
                                        <span>
                                            <span className='textLabel spaceRight spaceLeft'>Breakpoints: </span>
                                            <input 
-                                               type="number" 
-                                               step="1" min="1" max="10" 
+                                               type='number'
+                                               step='1' min='1' max='10'
                                                value={`${this.state.logBreakpoints}`} 
                                                onChange={this.updateBreakpoints} 
                                            />
