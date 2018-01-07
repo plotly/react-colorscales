@@ -231,6 +231,29 @@ export default class ColorscalePicker extends Component {
     }
 
     render() {
+
+        console.warn('fixSwatches', this.props.fixSwatches);
+        let swatchLabel = null;
+        let swatchSlider = null;
+
+        if (!this.props.fixSwatches{
+          swatchLabel = (
+            <div className='noWrap inlineBlock'>
+              <span className='textLabel spaceRight'>SwatchTest:</span>
+              <span className='textLabel spaceRight'>{this.state.nSwatches}</span>
+            </div>
+          );
+          swatchSlider = (
+            <Slider
+              min={1}
+              max={100}
+              defaultValue={this.state.nSwatches}
+              handle={this.handle}
+              onAfterChange={this.updateSwatchNumber}
+            />
+          );
+        }
+
         return (
             <div className='colorscalePickerContainer'>
                 <div className='colorscalePickerTopContainer'>
@@ -241,14 +264,9 @@ export default class ColorscalePicker extends Component {
                             onClick={() => {}}                           
                         />
                     </div>
-                    <div className='colorscaleControlPanel'>
+                    <div className='colorscaleControlPanel'>                        
                         <div>
-                           {!this.props.fixSwatches &&
-                               <div className='noWrap inlineBlock'>
-                                   <span className='textLabel spaceRight'>Swatches:</span>
-                                   <span className='textLabel spaceRight'>{this.state.nSwatches}</span>
-                               </div>
-                           }
+                           {swatchLabel}
                            {SCALES_WITHOUT_LOG.indexOf(this.state.colorscaleType) < 0 &&
                                <div className='noWrap inlineBlock alignTop'>
                                    <span className='textLabel spaceRight spaceLeft'>Log scale</span>
@@ -273,15 +291,7 @@ export default class ColorscalePicker extends Component {
                                    }
                                </div>
                            }
-                           {!this.props.fixSwatches &&
-                               <Slider
-                                   min={1}
-                                   max={100}
-                                   defaultValue={this.state.nSwatches}
-                                   handle={this.handle}
-                                   onAfterChange={this.updateSwatchNumber}
-                               />
-                           }
+                           {swatchSlider}
                         </div>
                         {this.state.colorscaleType === 'cubehelix' &&
                         <div>
