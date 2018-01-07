@@ -271,7 +271,7 @@ export default class ColorscalePicker extends Component {
                                    }
                                </div>
                            }
-                           {this.props.fixSwatches !== true &&
+                           {!this.props.fixSwatches &&
                                <Slider
                                    min={1}
                                    max={100}
