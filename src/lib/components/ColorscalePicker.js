@@ -232,14 +232,13 @@ export default class ColorscalePicker extends Component {
 
     render() {
 
-        console.warn('fixSwatches', this.props.fixSwatches);
         let swatchLabel = null;
         let swatchSlider = null;
 
-        if (!this.props.fixSwatches{
+        if (!this.props.fixSwatches) {
           swatchLabel = (
             <div className='noWrap inlineBlock'>
-              <span className='textLabel spaceRight'>SwatchTest:</span>
+              <span className='textLabel spaceRight'>Swatches:</span>
               <span className='textLabel spaceRight'>{this.state.nSwatches}</span>
             </div>
           );
