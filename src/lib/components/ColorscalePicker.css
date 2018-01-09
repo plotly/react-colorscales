@@ -28,7 +28,7 @@
     background-color: #DFE8F3;
 }
 
-.textLabel {	
+.colorscalePickerContainer .textLabel {
 	color: rgb(80, 103, 132); 
 	font-size: 12px;
 	vertical-align: top;
@@ -36,15 +36,15 @@
     text-transform: uppercase;
 }
 
-.spaceRight { margin-right: 5px; }
-.spaceRightZeroTop { margin-right: 5px; margin-top: 0 }
-.spaceLeft { margin-left: 5px; }
-.spaceTop { margin-top: 5px; }
-.alignMiddle { vertical-align: middle; }
-.alignTop { vertical-align: top; }
-.zeroSpace { margin: 0; }
-.noWrap { white-space: nowrap; }
-.inlineBlock { display: inline-block; }
+.colorscalePickerContainer .spaceRight { margin-right: 5px; }
+.colorscalePickerContainer .spaceRightZeroTop { margin-right: 5px; margin-top: 0 }
+.colorscalePickerContainer .spaceLeft { margin-left: 5px; }
+.colorscalePickerContainer .spaceTop { margin-top: 5px; }
+.colorscalePickerContainer .alignMiddle { vertical-align: middle; }
+.colorscalePickerContainer .alignTop { vertical-align: top; }
+.colorscalePickerContainer .zeroSpace { margin: 0; }
+.colorscalePickerContainer .noWrap { white-space: nowrap; }
+.colorscalePickerContainer .inlineBlock { display: inline-block; }
 
 .colorscalePickerTopContainer {
 	padding: 10px;
@@ -77,17 +77,17 @@
 	margin: 0 auto;
 }
 
-input[type=range] {
+.colorscalePickerContainer input[type=range] {
 	width: 200px;
 }
 
-input[type=number] {
+.colorscalePickerContainer input[type=number] {
     vertical-align: top;
     margin-top: -4px;
     margin-right: 5px;
 }
 
-input[type=text] {
+.colorscalePickerContainer input[type=text] {
 	text-align: center;
 	font-size: 12px;
 	width: 90%;
@@ -122,16 +122,16 @@ input[type=text] {
     background-color: #2a3f5f;
 }
 
-.rc-slider {
+.colorscaleControlPanel .rc-slider {
     width: 300px;
 }
 
-.rc-slider-tooltip {
+.colorscaleControlPanel .rc-slider-tooltip {
     opacity: 1;
     z-index: 999;
     font-family: Helvetica, sans-serif;
 }
 
-.rc-slider-rail {
+.colorscaleControlPanel .rc-slider-rail {
     background-color: #A2B1C6;
 }
