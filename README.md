@@ -9,6 +9,8 @@ A React UI component for picking and modifying colorscales, based on [Chroma-js]
 
 👉 [Demo source code](https://github.com/plotly/react-colorscales-demo-app)
 
+👉 [Wrapper for Dash apps (Python)](https://github.com/plotly/dash-colorscales/blob/master/README.md)
+
 
 ## Install
 
