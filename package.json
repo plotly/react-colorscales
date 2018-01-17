@@ -1,6 +1,6 @@
 {
   "name": "react-colorscales",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A React component for picking colorscales based on Chroma.js",
   "main": "build/index.js",
   "scripts": {
