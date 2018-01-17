@@ -99,7 +99,7 @@ class App extends Component {
             toggleButtonStyle = {borderColor: '#A2B1C6'};
         }
         return (
-            <div className="App">
+            <div className='App'>
                 <div 
                     onClick={this.toggleColorscalePicker}
                     className='toggleButton'
