@@ -2,6 +2,7 @@
 
 A React UI component for picking and modifying colorscales, based on [Chroma-js](https://gka.github.io/chroma.js/).
 
+Part of Plotly's [React Component Suite](https://plot.ly/products/react/) for building data visualization Web apps and products.
 
 ## Demo
 
