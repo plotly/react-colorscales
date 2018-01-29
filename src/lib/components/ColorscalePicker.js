@@ -7,12 +7,12 @@ import 'rc-slider/assets/index.css';
 
 import {COLORSCALE_TYPES, COLORSCALE_DESCRIPTIONS, BREWER, CMOCEAN, CUBEHELIX, SCALES_WITHOUT_LOG,
     DEFAULT_SCALE, DEFAULT_SWATCHES,DEFAULT_BREAKPOINTS, DEFAULT_START, DEFAULT_LOG_BREAKPOINTS,
-    DEFAULT_ROTATIONS, DEFAULT_GAMMA, DEFAULT_LIGHTNESS, DEFAULT_NCOLORS} from './constants.js';
+    DEFAULT_ROTATIONS, DEFAULT_GAMMA, DEFAULT_LIGHTNESS, DEFAULT_NCOLORS, DEFAULT_NPREVIEWCOLORS} from './constants.js';
 
 import './ColorscalePicker.css';
 
 const Handle = Slider.Handle;
-        
+
 export default class ColorscalePicker extends Component {
 
     constructor(props) {
@@ -69,7 +69,7 @@ export default class ColorscalePicker extends Component {
      */
         // helper function repeats a categorical colorscale array N times
         let repeatArray = (array, n) => {
-            let arrays = Array.apply(null, new Array(n)); 
+            let arrays = Array.apply(null, new Array(n));
             arrays = arrays.map(function() { return array });
             return [].concat.apply([], arrays);
         }
@@ -78,7 +78,7 @@ export default class ColorscalePicker extends Component {
             .mode('lch');
 
         if (log) {
-            const logData = Array(nSwatches).fill().map((x,i)=>i+1);           
+            const logData = Array(nSwatches).fill().map((x,i)=>i+1);
             cs = cs.classes(chroma.limits(logData, 'l', logBreakpoints));
         }
 
@@ -93,9 +93,9 @@ export default class ColorscalePicker extends Component {
     }
 
     toggleLog = () => {
-        const cs = this.getColorscale(this.state.previousColorscale, 
-                                      this.state.nSwatches, 
-                                      this.state.logBreakpoints, 
+        const cs = this.getColorscale(this.state.previousColorscale,
+                                      this.state.nSwatches,
+                                      this.state.logBreakpoints,
                                       !this.state.log);
 
         this.setState({log: !this.state.log, colorscale: cs});
@@ -111,8 +111,8 @@ export default class ColorscalePicker extends Component {
             return;
         }
 
-        const cs = this.getColorscale(newColorscale, 
-                                      this.state.nSwatches, 
+        const cs = this.getColorscale(newColorscale,
+                                      this.state.nSwatches,
                                       this.state.logBreakpoints,
                                       this.state.log);
 
@@ -137,7 +137,7 @@ export default class ColorscalePicker extends Component {
                     start: start,
                     rotations: rot
                 }
-            });            
+            });
         }
         this.props.onChange(cs);
     }
@@ -160,7 +160,7 @@ export default class ColorscalePicker extends Component {
         const bp = e.currentTarget.valueAsNumber;
 
         const cs = this.getColorscale(
-            this.state.previousColorscale, 
+            this.state.previousColorscale,
             this.state.nSwatches,
             bp,
             this.state.log);
@@ -174,7 +174,7 @@ export default class ColorscalePicker extends Component {
     }
 
     updateBreakpointArray = e => {
-        const bpArr = e.currentTarget.value.replace(/,\s*$/, '').split(',').map(Number);       
+        const bpArr = e.currentTarget.value.replace(/,\s*$/, '').split(',').map(Number);
         this.setState({
             customBreakpoints: bpArr
         });
@@ -214,7 +214,7 @@ export default class ColorscalePicker extends Component {
 
         this.onClick(newColorscale, start, rot);
     }
-    
+
     setColorscaleType = csType => {
         if (csType !== this.state.colorscaleType) {
             let isLogColorscale = this.state.log;
@@ -260,31 +260,31 @@ export default class ColorscalePicker extends Component {
                         <Colorscale
                             colorscale={this.state.colorscale}
                             maxWidth={300}
-                            onClick={() => {}}                           
+                            onClick={() => {}}
                         />
                     </div>
-                    <div className='colorscaleControlPanel'>                        
+                    <div className='colorscaleControlPanel'>
                         <div>
                            {swatchLabel}
                            {SCALES_WITHOUT_LOG.indexOf(this.state.colorscaleType) < 0 &&
                                <div className='noWrap inlineBlock alignTop'>
                                    <span className='textLabel spaceRight spaceLeft'>Log scale</span>
-                                   <input 
+                                   <input
                                        type='checkbox'
                                        name='log'
                                        value='log'
-                                       onChange={this.toggleLog} 
-                                       defaultChecked={this.state.log} 
+                                       onChange={this.toggleLog}
+                                       defaultChecked={this.state.log}
                                        className='spaceRightZeroTop alignMiddle'
                                    />
                                    {this.state.log &&
                                        <span>
                                            <span className='textLabel spaceRight spaceLeft'>Breakpoints: </span>
-                                           <input 
+                                           <input
                                                type='number'
                                                step='1' min='1' max='10'
-                                               value={`${this.state.logBreakpoints}`} 
-                                               onChange={this.updateBreakpoints} 
+                                               value={`${this.state.logBreakpoints}`}
+                                               onChange={this.updateBreakpoints}
                                            />
                                        </span>
                                    }
@@ -330,8 +330,8 @@ export default class ColorscalePicker extends Component {
                                    className='colorscaleButton'
                                    onClick={() => {this.setColorscaleType(x)}}
                                >
-                                   {x}                  
-                               </a>        
+                                   {x}
+                               </a>
                            )}
                        </div>
                        <div>
@@ -342,7 +342,7 @@ export default class ColorscalePicker extends Component {
                                     </p>
                                     <input
                                         type='text'
-                                        defaultValue={this.state.customBreakpoints.join(', ')} 
+                                        defaultValue={this.state.customBreakpoints.join(', ')}
                                         onChange={this.updateBreakpointArray}
                                     />
                                     <p className='textLabel spaceTop'>
@@ -365,15 +365,15 @@ export default class ColorscalePicker extends Component {
                     />
                     {BREWER.hasOwnProperty(this.state.colorscaleType) && BREWER[this.state.colorscaleType].map((x, i) =>
                         <Colorscale
-                            key={i}                            
+                            key={i}
                             onClick={this.onClick}
-                            colorscale={chroma.brewer[x]}
+                            colorscale={chroma.brewer[x].slice(0, DEFAULT_NPREVIEWCOLORS)}
                             label={x}
                         />
                     )}
                     {this.state.colorscaleType === 'cubehelix' && CUBEHELIX.map((x, i) =>
                         <Colorscale
-                            key={i}                            
+                            key={i}
                             onClick={this.onClick}
                             colorscale={chroma.cubehelix()
                                         .start(x.start)
@@ -383,6 +383,7 @@ export default class ColorscalePicker extends Component {
                                         .scale()
                                         .correctLightness()
                                         .colors(DEFAULT_NCOLORS)
+                                        .slice(0, DEFAULT_NPREVIEWCOLORS)
                             }
                             label={`s${x.start} r${x.rotations}`}
                             start={x.start}
@@ -391,9 +392,9 @@ export default class ColorscalePicker extends Component {
                     )}
                     {this.state.colorscaleType === 'cmocean' && Object.keys(CMOCEAN).map((x, i) =>
                         <Colorscale
-                            key={i}                            
+                            key={i}
                             onClick={this.onClick}
-                            colorscale={CMOCEAN[x]}
+                            colorscale={CMOCEAN[x].slice(0, DEFAULT_NPREVIEWCOLORS)}
                             label={x}
                         />
                     )}
