@@ -99,3 +99,4 @@ export const DEFAULT_SCALE = chroma.scale(['#fafa6e','#2A4858']).mode('lch').col
 export const DEFAULT_LOG_BREAKPOINTS = 4;
 export const DEFAULT_BREAKPOINTS = [0, 1];
 export const DEFAULT_SWATCH_WIDTH = 20;
+export const DEFAULT_NPREVIEWCOLORS = 9;
