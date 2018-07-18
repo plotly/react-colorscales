@@ -1,137 +1,152 @@
 .colorscalePickerContainer {
-	max-height: 550px;
-	overflow-y: scroll;
-    overflow-x: hidden;
-	max-width: 700px;
-	width: 400px;
-    min-width: 300px;
-	margin: 5px;
-	background: rgba(242,245,250,0.9);
-	border: 1px solid #C8D4E3;
-    position: absolute;
-    z-index: 99;
-    resize: horizontal;
-    font-family: Helvetica, sans-serif;
+  max-height: 550px;
+  overflow: auto;
+  max-width: 700px;
+  width: 400px;
+  min-width: 300px;
+  margin: 5px;
+  background: rgba(242, 245, 250, 0.9);
+  border: 1px solid #c8d4e3;
+  position: absolute;
+  z-index: 99;
+  resize: horizontal;
+  font-family: Helvetica, sans-serif;
+  padding: 10px;
 }
 
 .colorscalePickerContainer::-webkit-scrollbar {
-    width: 8px;
-    background-color: #DFE8F3;
+  width: 8px;
+  background-color: #dfe8f3;
 }
 
 .colorscalePickerContainer::-webkit-scrollbar-thumb {
-    background-color: #A2B1C6;
+  background-color: #a2b1c6;
 }
 
 .colorscalePickerContainer::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
-    background-color: #DFE8F3;
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+  background-color: #dfe8f3;
 }
 
 .colorscalePickerContainer .textLabel {
-	color: rgb(80, 103, 132); 
-	font-size: 12px;
-	vertical-align: top;
-    font-weight: 600;
-    text-transform: uppercase;
+  color: rgb(80, 103, 132);
+  font-size: 12px;
+  vertical-align: top;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.colorscalePickerContainer .spaceRight { margin-right: 5px; }
-.colorscalePickerContainer .spaceRightZeroTop { margin-right: 5px; margin-top: 0 }
-.colorscalePickerContainer .spaceLeft { margin-left: 5px; }
-.colorscalePickerContainer .spaceTop { margin-top: 5px; }
-.colorscalePickerContainer .alignMiddle { vertical-align: middle; }
-.colorscalePickerContainer .alignTop { vertical-align: top; }
-.colorscalePickerContainer .zeroSpace { margin: 0; }
-.colorscalePickerContainer .noWrap { white-space: nowrap; }
-.colorscalePickerContainer .inlineBlock { display: inline-block; }
-
-.colorscalePickerTopContainer {
-	padding: 10px;
-	min-height: 100px; 
-	height: 80%;
+.colorscalePickerContainer .spaceRight {
+  margin-right: 5px;
+}
+.colorscalePickerContainer .spaceRightZeroTop {
+  margin-right: 5px;
+  margin-top: 0;
+}
+.colorscalePickerContainer .spaceLeft {
+  margin-left: 5px;
+}
+.colorscalePickerContainer .spaceTop {
+  margin-top: 5px;
+}
+.colorscalePickerContainer .alignMiddle {
+  vertical-align: middle;
+}
+.colorscalePickerContainer .alignTop {
+  vertical-align: top;
+}
+.colorscalePickerContainer .zeroSpace {
+  margin: 0;
+}
+.colorscalePickerContainer .noWrap {
+  white-space: nowrap;
+}
+.colorscalePickerContainer .inlineBlock {
+  display: inline-block;
 }
 
 .colorscalePickerBottomContainer {
-	min-height: 100px;
-	textAlign: center;
+  textalign: center;
+  overflow-x: auto;
+  padding: 10px 0;
 }
 
-.colorscalePickerBottomContainer p {
-	width: 80%;
-	font-size: 13px;
-	color: #506784;
-	border: 1px solid #C8D4E3;
-	margin: 20px auto;
-    margin-top: 0;
-	padding: 10px;
-	border-radius: 2px;
-	text-align: left;
-	line-height: 1.4em;
+.colorscaleDescription {
+  min-width: 260px;
+  width: 80%;
+  font-size: 13px;
+  color: #506784;
+  border: 1px solid #c8d4e3;
+  margin: 10px auto;
+  margin-top: 0;
+  padding: 10px;
+  border-radius: 2px;
+  text-align: left;
+  line-height: 1.4em;
 }
 
 .colorscaleControlPanel {
-	display: block;
-	padding: 20px;
-	width: 80%;
-	margin: 0 auto;
+  display: block;
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
 }
 
-.colorscalePickerContainer input[type=range] {
-	width: 200px;
+.colorscalePickerContainer input[type="range"] {
+  width: 200px;
 }
 
-.colorscalePickerContainer input[type=number] {
-    vertical-align: top;
-    margin-top: -4px;
-    margin-right: 5px;
+.colorscalePickerContainer input[type="number"] {
+  vertical-align: top;
+  margin-top: -4px;
+  margin-right: 5px;
 }
 
-.colorscalePickerContainer input[type=text] {
-	text-align: center;
-	font-size: 12px;
-	width: 90%;
-	margin-top: 5px;
-	padding: 5px;
-	border: 1px solid #DFE8F3;
+.colorscalePickerContainer input[type="text"] {
+  text-align: center;
+  font-size: 12px;
+  width: 90%;
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid #dfe8f3;
 }
 
 .colorscaleControlsRow {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .colorscaleControlsRow div {
-	display: inline;
+  display: inline;
 }
 
 .colorscaleButton {
-	text-transform: uppercase;
-	border-radius: 0;
-	padding: 8px 10px;
-	color: #fff;
-	font-size: 10px;
-	font-weight: 600;
-	margin: 2px;
-	cursor: pointer;
-	border-radius: 3px;
-    display: inline-block;
-    background-color: #C8D4E3;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 8px 10px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  margin: 2px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: inline-block;
+  background-color: #c8d4e3;
 }
 
 .colorscaleButton:hover {
-    background-color: #2a3f5f;
+  background-color: #2a3f5f;
 }
 
 .colorscaleControlPanel .rc-slider {
-    width: 300px;
+  width: 300px;
 }
 
 .colorscaleControlPanel .rc-slider-tooltip {
-    opacity: 1;
-    z-index: 999;
-    font-family: Helvetica, sans-serif;
+  opacity: 1;
+  z-index: 999;
+  font-family: Helvetica, sans-serif;
 }
 
 .colorscaleControlPanel .rc-slider-rail {
-    background-color: #A2B1C6;
+  background-color: #a2b1c6;
 }
