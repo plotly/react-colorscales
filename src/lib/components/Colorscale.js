@@ -17,7 +17,7 @@ export default class Colorscale extends Component {
     }
 
     return (
-      <div style={{ width: "300px" }}>
+      <div style={{ width: "100%" }}>
         {this.props.label ? (
           <div
             style={{
@@ -25,7 +25,8 @@ export default class Colorscale extends Component {
               fontSize: "12px",
               color: "#2a3f5f",
               display: "inline-block",
-              width: "100px"
+              width: "70px",
+              textAlign: "start"
             }}
           >
             {this.props.label}
@@ -33,9 +34,9 @@ export default class Colorscale extends Component {
         ) : null}
         <div
           style={{
-            width: "200px",
             display: "inline-block",
-            textAlign: "start"
+            textAlign: "start",
+            width: "180px"
           }}
         >
           <div
