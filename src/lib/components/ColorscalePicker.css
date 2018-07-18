@@ -2,20 +2,18 @@
   max-height: 550px;
   overflow: auto;
   max-width: 700px;
-  width: 400px;
-  min-width: 300px;
-  margin: 5px;
+  min-width: 250px;
   background: rgba(242, 245, 250, 0.9);
   border: 1px solid #c8d4e3;
   position: absolute;
   z-index: 99;
-  resize: horizontal;
   font-family: Helvetica, sans-serif;
   padding: 10px;
+  resize: horizontal;
 }
 
 .colorscalePickerContainer::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
   background-color: #dfe8f3;
 }
 
@@ -66,13 +64,11 @@
 }
 
 .colorscalePickerBottomContainer {
-  textalign: center;
-  overflow-x: auto;
   padding: 10px 0;
 }
 
 .colorscaleDescription {
-  min-width: 260px;
+  min-width: 240px;
   width: 80%;
   font-size: 13px;
   color: #506784;
@@ -138,7 +134,7 @@
 }
 
 .colorscaleControlPanel .rc-slider {
-  width: 300px;
+  width: 200px;
 }
 
 .colorscaleControlPanel .rc-slider-tooltip {
