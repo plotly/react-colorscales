@@ -121,3 +121,8 @@
 .colorscaleControlPanel .rc-slider-rail {
   background-color: #a2b1c6;
 }
+
+.Select.is-focused:not(.is-open) > .Select-control {
+  border-color: #c8d4e3 !important;
+  box-shadow: none;
+}

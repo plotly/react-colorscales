@@ -327,9 +327,12 @@ export default class ColorscalePicker extends Component {
       value: c,
     }));
 
+    const colorscalePickerContainerClassnames = 'colorscalePickerContainer' + (
+      this.props.className ? ' ' + this.props.className : '');
+
     return (
       <div
-        className="colorscalePickerContainer"
+        className={colorscalePickerContainerClassnames}
         style={{width: this.props.width || '300px'}}
       >
         <div className="colorscalePickerTopContainer">
