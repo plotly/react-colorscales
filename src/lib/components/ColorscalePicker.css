@@ -1,8 +1,9 @@
 .colorscalePickerContainer {
   max-height: 550px;
-  overflow: auto;
   max-width: 700px;
-  min-width: 250px;
+  min-width: 295px;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: rgba(242, 245, 250, 0.9);
   border: 1px solid #c8d4e3;
   position: absolute;
@@ -68,13 +69,9 @@
 }
 
 .colorscaleDescription {
-  min-width: 240px;
-  width: 80%;
   font-size: 13px;
   color: #506784;
   border: 1px solid #c8d4e3;
-  margin: 10px auto;
-  margin-top: 0;
   padding: 10px;
   border-radius: 2px;
   text-align: left;
@@ -113,28 +110,6 @@
 
 .colorscaleControlsRow div {
   display: inline;
-}
-
-.colorscaleButton {
-  text-transform: uppercase;
-  border-radius: 0;
-  padding: 8px 10px;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  margin: 2px;
-  cursor: pointer;
-  border-radius: 3px;
-  display: inline-block;
-  background-color: #c8d4e3;
-}
-
-.colorscaleButton:hover {
-  background-color: #2a3f5f;
-}
-
-.colorscaleControlPanel .rc-slider {
-  width: 200px;
 }
 
 .colorscaleControlPanel .rc-slider-tooltip {

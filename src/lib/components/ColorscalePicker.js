@@ -331,7 +331,7 @@ export default class ColorscalePicker extends Component {
     });
 
     return (
-      <div className="colorscalePickerContainer">
+      <div className="colorscalePickerContainer" style={{width: this.props.width || '300px'}}>
         <div className="colorscalePickerTopContainer">
           <Select
             options={colorscaleOptions}
@@ -346,6 +346,12 @@ export default class ColorscalePicker extends Component {
 
         <div className="colorscalePickerBottomContainer">
           <div style={{ margin: "0 auto" }}>
+            <Colorscale
+              key="reset"
+              colorscale={this.state.colorscaleOnMount}
+              onClick={this.onClick}
+              label={"RESET"}
+            />
             {BREWER.hasOwnProperty(this.state.colorscaleType) &&
               BREWER[this.state.colorscaleType].map((x, i) => (
                 <Colorscale
@@ -393,81 +399,76 @@ export default class ColorscalePicker extends Component {
                   .mode("lch")
                   .colors(this.state.nSwatches)}
                 maxWidth={200}
-                label="Click to apply"
+                label="Preview"
               />
             )}
+
+            <p className="colorscaleDescription">
+              {COLORSCALE_DESCRIPTIONS[this.state.colorscaleType]}
+            </p>
+
+            {["custom", "cubehelix"].includes(this.state.colorscaleType) ? (
+              <div className="colorscaleControlPanel">
+                {this.state.colorscaleType === "cubehelix" && (
+                  <div>
+                    <div className="noWrap">
+                      <span className="textLabel">Start: </span>
+                      <span className="textLabel">
+                        {this.state.cubehelix.start}
+                      </span>
+                      <Slider
+                        min={0}
+                        max={300}
+                        step={1}
+                        value={this.state.cubehelix.start}
+                        onChange={this.updateCubehelixStartState}
+                        onAfterChange={this.updateCubehelixStart}
+                        handle={this.handle}
+                      />
+                    </div>
+                    <div className="noWrap">
+                      <span className="textLabel">Rotations: </span>
+                      <span className="textLabel">
+                        {this.state.cubehelix.rotations}
+                      </span>
+                      <Slider
+                        min={-1.5}
+                        max={1.5}
+                        step={0.1}
+                        value={this.state.cubehelix.rotations}
+                        onChange={this.updateCubehelixRotState}
+                        onAfterChange={this.updateCubehelixRotations}
+                        handle={this.handle}
+                      />
+                    </div>
+                  </div>
+                )}
+                <div>
+                  {this.state.colorscaleType === "custom" && (
+                    <div className="colorscaleControlsRow">
+                      <p className="textLabel zeroSpace">
+                        Decimals between 0 and 1, or numbers between MIN and MAX of
+                        your data, separated by commas:
+                      </p>
+                      <input
+                        type="text"
+                        defaultValue={this.state.customBreakpoints.join(", ")}
+                        onChange={this.updateBreakpointArray}
+                      />
+                      <p className="textLabel spaceTop">
+                        {this.state.customBreakpoints.length - 1} breakpoints:{" "}
+                        {this.state.customBreakpoints.join(" | ")}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
 
-        {["custom", "cubehelix"].includes(this.state.colorscaleType) ? (
-          <div className="colorscaleControlPanel">
-            {this.state.colorscaleType === "cubehelix" && (
-              <div>
-                <div className="noWrap">
-                  <span className="textLabel">Start: </span>
-                  <span className="textLabel">
-                    {this.state.cubehelix.start}
-                  </span>
-                  <Slider
-                    min={0}
-                    max={300}
-                    step={1}
-                    value={this.state.cubehelix.start}
-                    onChange={this.updateCubehelixStartState}
-                    onAfterChange={this.updateCubehelixStart}
-                    handle={this.handle}
-                  />
-                </div>
-                <div className="noWrap">
-                  <span className="textLabel">Rotations: </span>
-                  <span className="textLabel">
-                    {this.state.cubehelix.rotations}
-                  </span>
-                  <Slider
-                    min={-1.5}
-                    max={1.5}
-                    step={0.1}
-                    value={this.state.cubehelix.rotations}
-                    onChange={this.updateCubehelixRotState}
-                    onAfterChange={this.updateCubehelixRotations}
-                    handle={this.handle}
-                  />
-                </div>
-              </div>
-            )}
-            <div>
-              {this.state.colorscaleType === "custom" && (
-                <div className="colorscaleControlsRow">
-                  <p className="textLabel zeroSpace">
-                    Decimals between 0 and 1, or numbers between MIN and MAX of
-                    your data, separated by commas:
-                  </p>
-                  <input
-                    type="text"
-                    defaultValue={this.state.customBreakpoints.join(", ")}
-                    onChange={this.updateBreakpointArray}
-                  />
-                  <p className="textLabel spaceTop">
-                    {this.state.customBreakpoints.length - 1} breakpoints:{" "}
-                    {this.state.customBreakpoints.join(" | ")}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : null}
-
-        <p className="colorscaleDescription">
-          {COLORSCALE_DESCRIPTIONS[this.state.colorscaleType]}
-        </p>
-
         {this.props.disableSwatchControls ? null : this.renderSwatchControls()}
 
-        <Colorscale
-          colorscale={this.state.colorscaleOnMount}
-          onClick={this.onClick}
-          label={"RESET"}
-        />
       </div>
     );
   }
