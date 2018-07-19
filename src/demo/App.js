@@ -124,6 +124,7 @@ class App extends Component {
           <ColorscalePicker
             onChange={this.onChange}
             colorscale={this.state.colorscale}
+            width={300}
           />
         )}
         <div className="plotContainer">
