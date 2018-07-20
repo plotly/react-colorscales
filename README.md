@@ -63,12 +63,17 @@ const viridisColorscale = ['#fafa6e', '#9cdf7c', '#4abd8c', '#00968e', '#106e7c'
 
 `<ColorscalePicker />` generates a UI panel for selecting a color scale palette:
 
-| `prop`         | Description                                                                                | 
-| -------------- | ------------------------------------------------------------------------------------------ |
-| `onChange`     | Passes back a new color scale when a scale is chosen or modified.                          |
-| `colorscale`   | Default colorscale as an array of color strings (HEX or RGB). See Quick Start above.       |
-| `nSwatches`    | Optional: Number of discrete colors or "swatches" in the default color scale.              |
-| `fixSwatches`  | Optional: If set to `true`, hides the swatches slider and fixes swatches to `nSwatches.    |
+| `prop`                  | Description                                                                                | 
+| ----------------------- | ------------------------------------------------------------------------------------------ |
+| `onChange`              | Passes back a new color scale when a scale is chosen or modified.                          |
+| `colorscale`            | Default colorscale as an array of color strings (HEX or RGB). See Quick Start above.       |
+| `nSwatches`             | Optional: Number of discrete colors or "swatches" in the default color scale.              |
+| `fixSwatches`           | Optional: If set to `true`, hides the swatches slider and fixes swatches to `nSwatches.    |
+| `colorscaleType`        | Optional: If set, sets ColorPicker Dropdown to specific colorscale, one of `COLORSCALE_TYPES`|
+| `width`                 | Optional: Can set width of component                                                       |
+| `className`             | Optional: Can add className to base level component                                        |
+| `disableSwatchControls` | Optional: Does not show swatch related controls in ColorPicker                             |
+
 
 See the [demo app source code](https://github.com/plotly/react-colorscales-demo-app/blob/master/src/App.js) for an example of importing and using these components.
 
