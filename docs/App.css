@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+}
+
+.toggleButton {
+    padding: 10px;
+    border: 1px solid #DFE8F3;
+    margin: 5px;
+    font-size: 12px;
+    width: 200px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggleButton:hover {
+    border-color: #A2B1C6;
+}
