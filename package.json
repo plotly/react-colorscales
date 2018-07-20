@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "start": "webpack-dev-server --hot",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "buildDemoBundle": "webpack ./docs/index.js --output-path ./docs --output-filename bundle.js"
   },
   "repository": {
     "type": "git",
