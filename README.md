@@ -6,9 +6,9 @@ Part of Plotly's [React Component Suite](https://plot.ly/products/react/) for bu
 
 ## Demo
 
-👉 [DEMO](http://react-colorscales.getforge.io/)
+👉 [DEMO](https://plotly.github.io/react-colorscales/)
 
-👉 [Demo source code](https://github.com/plotly/react-colorscales-demo-app)
+👉 [Demo source code](https://github.com/plotly/react-colorscales/tree/master/docs)
 
 👉 [Wrapper for Dash apps (Python)](https://github.com/plotly/dash-colorscales/blob/master/README.md)
 
@@ -36,7 +36,7 @@ const viridisColorscale = ['#fafa6e', '#9cdf7c', '#4abd8c', '#00968e', '#106e7c'
     width={150}
 />
 
-// Show the colorscale picker with a default colorscale
+// Show the colorscale picker
 
 <ColorscalePicker 
     onChange={this.onChange}
@@ -83,7 +83,7 @@ See the [demo app source code](https://github.com/plotly/react-colorscales-demo-
 
 ## Screenshots
 
-![react-colorscales-screenshot](https://github.com/plotly/react-colorscale-picker/raw/master/screenshot.png)
+![react-colorscales-screenshot](https://user-images.githubusercontent.com/4257572/43021804-01564c8a-8c33-11e8-961b-416c6b00caa2.png)
 
 
 ## Credit
