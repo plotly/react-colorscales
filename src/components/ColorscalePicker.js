@@ -323,7 +323,7 @@ export default class ColorscalePicker extends Component {
 
   render() {
     const colorscaleOptions = COLORSCALE_TYPES.map(c => ({
-      label: c + ' scale',
+      label: c + ' scales',
       value: c,
     }));
 
@@ -412,7 +412,7 @@ export class ColorscalePaletteSelector extends Component {
               <Colorscale
                 key={i}
                 onClick={onClick}
-                colorscale={chroma.brewer[x].slice(0, DEFAULT_NPREVIEWCOLORS)}
+                colorscale={chroma.scale(x).colors(scaleLength || DEFAULT_NPREVIEWCOLORS)}
                 label={x}
                 scaleLength={scaleLength}
               />
@@ -431,8 +431,7 @@ export class ColorscalePaletteSelector extends Component {
                   .lightness(DEFAULT_LIGHTNESS)
                   .scale()
                   .correctLightness()
-                  .colors(DEFAULT_NCOLORS)
-                  .slice(0, DEFAULT_NPREVIEWCOLORS)}
+                  .colors(scaleLength || DEFAULT_NPREVIEWCOLORS)}
                 start={x.start}
                 rot={x.rotations}
                 label={`s${x.start} r${x.rotations}`}
@@ -445,7 +444,7 @@ export class ColorscalePaletteSelector extends Component {
               <Colorscale
                 key={i}
                 onClick={onClick}
-                colorscale={CMOCEAN[x].slice(0, DEFAULT_NPREVIEWCOLORS)}
+                colorscale={CMOCEAN[x].slice(0, scaleLength || DEFAULT_NPREVIEWCOLORS)}
                 label={x}
                 scaleLength={scaleLength}
               />
@@ -458,7 +457,7 @@ export class ColorscalePaletteSelector extends Component {
                 .scale(previousColorscale)
                 .classes(customBreakpoints)
                 .mode('lch')
-                .colors(nSwatches)}
+                .colors(scaleLength || nSwatches)}
               maxWidth={200}
               label="Preview"
               scaleLength={scaleLength}
