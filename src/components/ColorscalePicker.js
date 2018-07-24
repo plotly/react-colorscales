@@ -35,7 +35,7 @@ export default class ColorscalePicker extends Component {
     super(props);
 
     this.state = {
-      nSwatches: this.props.nSwatches || DEFAULT_SWATCHES,
+      nSwatches: this.props.nSwatches || this.props.scaleLength || DEFAULT_SWATCHES,
       colorscale: this.props.colorscale || DEFAULT_SCALE,
       previousColorscale: this.props.colorscale || DEFAULT_SCALE,
       colorscaleType:
