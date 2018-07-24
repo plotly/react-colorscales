@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { DEFAULT_SCALE, DEFAULT_SWATCH_WIDTH } from "./constants.js";
+import React, {Component} from 'react';
+import {DEFAULT_SCALE, DEFAULT_SWATCH_WIDTH} from './constants.js';
 
 export default class Colorscale extends Component {
   render() {
@@ -40,16 +40,16 @@ export default class Colorscale extends Component {
       : '180px';
 
     return (
-      <div style={{ width: "100%" }}>
+      <div style={{width: '100%'}}>
         {this.props.label ? (
           <div
             style={{
               fontWeight: 600,
-              fontSize: "12px",
-              color: "#2a3f5f",
-              display: "inline-block",
-              width: "70px",
-              textAlign: "start"
+              fontSize: '12px',
+              color: '#2a3f5f',
+              display: 'inline-block',
+              width: '70px',
+              textAlign: 'start',
             }}
           >
             {this.props.label}
@@ -65,8 +65,8 @@ export default class Colorscale extends Component {
           <div
             className="colorscale-block"
             style={{
-              fontSize: "0px",
-              display: "inline-block"
+              fontSize: '0px',
+              display: 'inline-block',
             }}
             onClick={() =>
               this.props.onClick(scale, this.props.start, this.props.rot)

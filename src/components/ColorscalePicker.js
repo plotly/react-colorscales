@@ -327,8 +327,9 @@ export default class ColorscalePicker extends Component {
       value: c,
     }));
 
-    const colorscalePickerContainerClassnames = 'colorscalePickerContainer' + (
-      this.props.className ? ' ' + this.props.className : '');
+    const colorscalePickerContainerClassnames =
+      'colorscalePickerContainer' +
+      (this.props.className ? ' ' + this.props.className : '');
 
     return (
       <div
