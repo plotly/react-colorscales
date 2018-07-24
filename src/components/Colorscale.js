@@ -16,6 +16,29 @@ export default class Colorscale extends Component {
       }
     }
 
+    let adjustedScale = scale.map((x, i) => (
+      <div
+        key={i}
+        className="colorscale-swatch"
+        style={{
+          backgroundColor: x,
+          width: '20px',
+          height: '20px',
+          margin: '0 auto',
+          display: 'inline-block',
+          cursor: 'pointer',
+        }}
+      />
+    ));
+
+    if (this.props.scaleLength) {
+      adjustedScale = adjustedScale.slice(0, this.props.scaleLength);
+    }
+
+    const scaleWidth = this.props.scaleLength
+      ? swatchWidth * this.props.scaleLength + 'px'
+      : '180px';
+
     return (
       <div style={{ width: "100%" }}>
         {this.props.label ? (
@@ -34,9 +57,9 @@ export default class Colorscale extends Component {
         ) : null}
         <div
           style={{
-            display: "inline-block",
-            textAlign: "start",
-            width: "180px"
+            display: 'inline-block',
+            textAlign: 'start',
+            width: scaleWidth,
           }}
         >
           <div
@@ -49,20 +72,7 @@ export default class Colorscale extends Component {
               this.props.onClick(scale, this.props.start, this.props.rot)
             }
           >
-            {scale.map((x, i) => (
-              <div
-                key={i}
-                className="colorscale-swatch"
-                style={{
-                  backgroundColor: x,
-                  width: "20px",
-                  height: "20px",
-                  margin: "0 auto",
-                  display: "inline-block",
-                  cursor: "pointer"
-                }}
-              />
-            ))}
+            {adjustedScale}
           </div>
         </div>
       </div>
