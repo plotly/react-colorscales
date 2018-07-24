@@ -323,7 +323,7 @@ export default class ColorscalePicker extends Component {
 
   render() {
     const colorscaleOptions = COLORSCALE_TYPES.map(c => ({
-      label: c[0].toUpperCase() + c.slice(1),
+      label: c + ' scale',
       value: c,
     }));
 
