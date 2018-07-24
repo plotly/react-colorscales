@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { DEFAULT_SCALE, DEFAULT_SWATCH_WIDTH } from "./constants.js";
+import React, {Component} from 'react';
+import {DEFAULT_SCALE, DEFAULT_SWATCH_WIDTH} from './constants.js';
 
 export default class Colorscale extends Component {
   render() {
@@ -16,17 +16,40 @@ export default class Colorscale extends Component {
       }
     }
 
+    let adjustedScale = scale.map((x, i) => (
+      <div
+        key={i}
+        className="colorscale-swatch"
+        style={{
+          backgroundColor: x,
+          width: '20px',
+          height: '20px',
+          margin: '0 auto',
+          display: 'inline-block',
+          cursor: 'pointer',
+        }}
+      />
+    ));
+
+    if (this.props.scaleLength) {
+      adjustedScale = adjustedScale.slice(0, this.props.scaleLength);
+    }
+
+    const scaleWidth = this.props.scaleLength
+      ? swatchWidth * this.props.scaleLength + 'px'
+      : '180px';
+
     return (
-      <div style={{ width: "100%" }}>
+      <div style={{width: '100%'}}>
         {this.props.label ? (
           <div
             style={{
               fontWeight: 600,
-              fontSize: "12px",
-              color: "#2a3f5f",
-              display: "inline-block",
-              width: "70px",
-              textAlign: "start"
+              fontSize: '12px',
+              color: '#2a3f5f',
+              display: 'inline-block',
+              width: '70px',
+              textAlign: 'start',
             }}
           >
             {this.props.label}
@@ -34,35 +57,22 @@ export default class Colorscale extends Component {
         ) : null}
         <div
           style={{
-            display: "inline-block",
-            textAlign: "start",
-            width: "180px"
+            display: 'inline-block',
+            textAlign: 'start',
+            width: scaleWidth,
           }}
         >
           <div
             className="colorscale-block"
             style={{
-              fontSize: "0px",
-              display: "inline-block"
+              fontSize: '0px',
+              display: 'inline-block',
             }}
             onClick={() =>
               this.props.onClick(scale, this.props.start, this.props.rot)
             }
           >
-            {scale.map((x, i) => (
-              <div
-                key={i}
-                className="colorscale-swatch"
-                style={{
-                  backgroundColor: x,
-                  width: "20px",
-                  height: "20px",
-                  margin: "0 auto",
-                  display: "inline-block",
-                  cursor: "pointer"
-                }}
-              />
-            ))}
+            {adjustedScale}
           </div>
         </div>
       </div>

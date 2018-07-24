@@ -323,12 +323,13 @@ export default class ColorscalePicker extends Component {
 
   render() {
     const colorscaleOptions = COLORSCALE_TYPES.map(c => ({
-      label: c[0].toUpperCase() + c.slice(1),
+      label: c + ' scale',
       value: c,
     }));
 
-    const colorscalePickerContainerClassnames = 'colorscalePickerContainer' + (
-      this.props.className ? ' ' + this.props.className : '');
+    const colorscalePickerContainerClassnames =
+      'colorscalePickerContainer' +
+      (this.props.className ? ' ' + this.props.className : '');
 
     return (
       <div
@@ -363,6 +364,7 @@ export default class ColorscalePicker extends Component {
           updateCubehelixRotState={this.updateCubehelixRotState}
           updateCubehelixRotations={this.updateCubehelixRotations}
           updateBreakpointArray={this.updateBreakpointArray}
+          scaleLength={this.props.scaleLength}
         />
 
         {this.props.disableSwatchControls ? null : this.renderSwatchControls()}
@@ -391,6 +393,7 @@ export class ColorscalePaletteSelector extends Component {
       updateCubehelixRotState,
       updateCubehelixRotations,
       updateBreakpointArray,
+      scaleLength,
     } = this.props;
 
     return (
@@ -401,6 +404,7 @@ export class ColorscalePaletteSelector extends Component {
             colorscale={colorscaleOnMount}
             onClick={onClick}
             label={'RESET'}
+            scaleLength={scaleLength}
           />
 
           {BREWER.hasOwnProperty(colorscaleType) &&
@@ -410,6 +414,7 @@ export class ColorscalePaletteSelector extends Component {
                 onClick={onClick}
                 colorscale={chroma.brewer[x].slice(0, DEFAULT_NPREVIEWCOLORS)}
                 label={x}
+                scaleLength={scaleLength}
               />
             ))}
 
@@ -431,6 +436,7 @@ export class ColorscalePaletteSelector extends Component {
                 start={x.start}
                 rot={x.rotations}
                 label={`s${x.start} r${x.rotations}`}
+                scaleLength={scaleLength}
               />
             ))}
 
@@ -441,6 +447,7 @@ export class ColorscalePaletteSelector extends Component {
                 onClick={onClick}
                 colorscale={CMOCEAN[x].slice(0, DEFAULT_NPREVIEWCOLORS)}
                 label={x}
+                scaleLength={scaleLength}
               />
             ))}
 
@@ -454,6 +461,7 @@ export class ColorscalePaletteSelector extends Component {
                 .colors(nSwatches)}
               maxWidth={200}
               label="Preview"
+              scaleLength={scaleLength}
             />
           )}
 
