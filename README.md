@@ -73,6 +73,7 @@ const viridisColorscale = ['#fafa6e', '#9cdf7c', '#4abd8c', '#00968e', '#106e7c'
 | `width`                 | Optional: Can set width of component                                                       |
 | `className`             | Optional: Can add className to base level component                                        |
 | `disableSwatchControls` | Optional: Does not show swatch related controls in ColorPicker                             |
+| `scaleLength`| Optional: Can specify the lengh of the Colorscales used in the ColorPicker |
 
 
 See the [demo app source code](https://github.com/plotly/react-colorscales-demo-app/blob/master/src/App.js) for an example of importing and using these components.
