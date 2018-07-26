@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
-import {DEFAULT_SCALE, DEFAULT_SWATCH_WIDTH} from './constants.js';
+import {
+  DEFAULT_SCALE,
+  DEFAULT_SWATCH_WIDTH,
+  DEFAULT_NPREVIEWCOLORS,
+} from './constants.js';
 
 export default class Colorscale extends Component {
   render() {
-    const scale = this.props.colorscale || DEFAULT_SCALE;
+    const scaleLength = this.props.scaleLength || DEFAULT_NPREVIEWCOLORS;
+
+    const scale = this.props.colorscale
+      ? this.props.colorscale.slice(0, scaleLength)
+      : DEFAULT_SCALE;
+
     let swatchWidth = DEFAULT_SWATCH_WIDTH;
 
     if (this.props.width) {
