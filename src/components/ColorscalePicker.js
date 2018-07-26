@@ -30,12 +30,52 @@ import './ColorscalePicker.css';
 
 const Handle = Slider.Handle;
 
+export function getColorscale(
+  colorscale,
+  nSwatches,
+  logBreakpoints,
+  log,
+  colorscaleType
+) {
+  /*
+   * getColorscale() takes a scale, modifies it based on the input
+   * parameters, and returns a new scale
+   */
+  // helper function repeats a categorical colorscale array N times
+  let repeatArray = (array, n) => {
+    let arrays = Array.apply(null, new Array(n));
+    arrays = arrays.map(function() {
+      return array;
+    });
+    return [].concat.apply([], arrays);
+  };
+
+  let cs = chroma.scale(colorscale).mode('lch');
+
+  if (log) {
+    const logData = Array(nSwatches)
+      .fill()
+      .map((x, i) => i + 1);
+    cs = cs.classes(chroma.limits(logData, 'l', logBreakpoints));
+  }
+
+  let discreteScale = cs.colors(nSwatches);
+
+  // repeat linear categorical ("qualitative") colorscales instead of repeating them
+  if (!log && colorscaleType === 'categorical') {
+    discreteScale = repeatArray(colorscale, nSwatches).slice(0, nSwatches);
+  }
+
+  return discreteScale;
+}
+
 export default class ColorscalePicker extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      nSwatches: this.props.nSwatches || this.props.scaleLength || DEFAULT_SWATCHES,
+      nSwatches:
+        this.props.nSwatches || this.props.scaleLength || DEFAULT_SWATCHES,
       colorscale: this.props.colorscale || DEFAULT_SCALE,
       previousColorscale: this.props.colorscale || DEFAULT_SCALE,
       colorscaleType:
@@ -50,7 +90,6 @@ export default class ColorscalePicker extends Component {
       },
     };
 
-    this.getColorscale = this.getColorscale.bind(this);
     this.onClick = this.onClick.bind(this);
     this.setColorscaleType = this.setColorscaleType.bind(this);
     this.updateCubehelixStart = this.updateCubehelixStart.bind(this);
@@ -79,45 +118,13 @@ export default class ColorscalePicker extends Component {
     );
   };
 
-  getColorscale = (colorscale, nSwatches, logBreakpoints, log) => {
-    /*
-     * getColorscale() takes a scale, modifies it based on the input
-     * parameters, and returns a new scale
-     */
-    // helper function repeats a categorical colorscale array N times
-    let repeatArray = (array, n) => {
-      let arrays = Array.apply(null, new Array(n));
-      arrays = arrays.map(function() {
-        return array;
-      });
-      return [].concat.apply([], arrays);
-    };
-
-    let cs = chroma.scale(colorscale).mode('lch');
-
-    if (log) {
-      const logData = Array(nSwatches)
-        .fill()
-        .map((x, i) => i + 1);
-      cs = cs.classes(chroma.limits(logData, 'l', logBreakpoints));
-    }
-
-    let discreteScale = cs.colors(nSwatches);
-
-    // repeat linear categorical ("qualitative") colorscales instead of repeating them
-    if (!log && this.state.colorscaleType === 'categorical') {
-      discreteScale = repeatArray(colorscale, nSwatches).slice(0, nSwatches);
-    }
-
-    return discreteScale;
-  };
-
   toggleLog = () => {
-    const cs = this.getColorscale(
+    const cs = getColorscale(
       this.state.previousColorscale,
       this.state.nSwatches,
       this.state.logBreakpoints,
-      !this.state.log
+      !this.state.log,
+      this.state.colorscaleType
     );
 
     this.setState({log: !this.state.log, colorscale: cs});
@@ -133,11 +140,12 @@ export default class ColorscalePicker extends Component {
       return;
     }
 
-    const cs = this.getColorscale(
+    const cs = getColorscale(
       newColorscale,
       this.state.nSwatches,
       this.state.logBreakpoints,
-      this.state.log
+      this.state.log,
+      this.state.colorscaleType
     );
 
     let previousColorscale = newColorscale;
@@ -169,11 +177,12 @@ export default class ColorscalePicker extends Component {
   };
 
   updateSwatchNumber = ns => {
-    const cs = this.getColorscale(
+    const cs = getColorscale(
       this.state.previousColorscale,
       ns,
       this.state.logBreakpoints,
-      this.state.log
+      this.state.log,
+      this.state.colorscaleType
     );
     this.setState({
       nSwatches: ns,
@@ -186,11 +195,12 @@ export default class ColorscalePicker extends Component {
   updateBreakpoints = e => {
     const bp = e.currentTarget.valueAsNumber;
 
-    const cs = this.getColorscale(
+    const cs = getColorscale(
       this.state.previousColorscale,
       this.state.nSwatches,
       bp,
-      this.state.log
+      this.state.log,
+      this.state.colorscaleType
     );
 
     this.setState({
@@ -404,7 +414,7 @@ export class ColorscalePaletteSelector extends Component {
             colorscale={colorscaleOnMount}
             onClick={onClick}
             label={'RESET'}
-            scaleLength={scaleLength}
+            scaleLength={scaleLength || DEFAULT_NPREVIEWCOLORS}
           />
 
           {BREWER.hasOwnProperty(colorscaleType) &&
@@ -412,7 +422,9 @@ export class ColorscalePaletteSelector extends Component {
               <Colorscale
                 key={i}
                 onClick={onClick}
-                colorscale={chroma.scale(x).colors(scaleLength || DEFAULT_NPREVIEWCOLORS)}
+                colorscale={chroma
+                  .scale(x)
+                  .colors(scaleLength || DEFAULT_NPREVIEWCOLORS)}
                 label={x}
                 scaleLength={scaleLength}
               />
@@ -444,7 +456,10 @@ export class ColorscalePaletteSelector extends Component {
               <Colorscale
                 key={i}
                 onClick={onClick}
-                colorscale={CMOCEAN[x].slice(0, scaleLength || DEFAULT_NPREVIEWCOLORS)}
+                colorscale={CMOCEAN[x].slice(
+                  0,
+                  scaleLength || DEFAULT_NPREVIEWCOLORS
+                )}
                 label={x}
                 scaleLength={scaleLength}
               />
