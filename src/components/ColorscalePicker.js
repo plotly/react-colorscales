@@ -173,7 +173,7 @@ export default class ColorscalePicker extends Component {
         },
       });
     }
-    this.props.onChange(cs);
+    this.props.onChange(cs, this.state.colorscaleType);
   };
 
   updateSwatchNumber = ns => {
