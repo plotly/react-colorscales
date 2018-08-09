@@ -78,7 +78,7 @@ class App extends Component {
           <Colorscale
             colorscale={this.state.colorscale}
             onClick={() => {}}
-            width={150}
+            width={200}
           />
           Toggle Colorscale Picker
         </div>

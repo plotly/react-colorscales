@@ -11,6 +11,7 @@
   font-family: Helvetica, sans-serif;
   padding: 10px;
   resize: horizontal;
+  text-align: left;
 }
 
 .colorscalePickerContainer::-webkit-scrollbar {
