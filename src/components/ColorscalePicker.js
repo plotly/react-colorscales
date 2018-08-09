@@ -11,6 +11,7 @@ import {
   COLORSCALE_TYPES,
   COLORSCALE_DESCRIPTIONS,
   BREWER,
+
   CMOCEAN,
   CUBEHELIX,
   SCALES_WITHOUT_LOG,
@@ -24,6 +25,7 @@ import {
   DEFAULT_LIGHTNESS,
   DEFAULT_NCOLORS,
   DEFAULT_NPREVIEWCOLORS,
+  BUILTINS,
 } from './constants.js';
 
 import './ColorscalePicker.css';
@@ -74,9 +76,8 @@ export default class ColorscalePicker extends Component {
     super(props);
 
     this.state = {
-      nSwatches:
-        this.props.nSwatches || this.props.scaleLength || DEFAULT_SWATCHES,
       colorscale: this.props.colorscale || DEFAULT_SCALE,
+      nSwatches: (this.props.colorscale || DEFAULT_SCALE).length,
       previousColorscale: this.props.colorscale || DEFAULT_SCALE,
       colorscaleType:
         this.props.colorscaleType || this.props.initialColorscaleType,
@@ -142,7 +143,7 @@ export default class ColorscalePicker extends Component {
 
     const cs = getColorscale(
       newColorscale,
-      this.state.nSwatches,
+      newColorscale.length,
       this.state.logBreakpoints,
       this.state.log,
       this.state.colorscaleType
@@ -157,6 +158,7 @@ export default class ColorscalePicker extends Component {
       this.setState({
         previousColorscale: previousColorscale,
         colorscale: cs,
+        nSwatches: newColorscale.length,
         previousCustomBreakpoints:
           this.state.colorscaleType === 'custom'
             ? this.state.customBreakpoints
@@ -166,6 +168,7 @@ export default class ColorscalePicker extends Component {
       this.setState({
         previousColorscale: previousColorscale,
         colorscale: cs,
+        nSwatches: newColorscale.length,
         previousCustomBreakpoints: null,
         cubehelix: {
           start: start,
@@ -417,16 +420,26 @@ export class ColorscalePaletteSelector extends Component {
             scaleLength={scaleLength || DEFAULT_NPREVIEWCOLORS}
           />
 
+
+          {BUILTINS.hasOwnProperty(colorscaleType) &&
+            Object.keys(BUILTINS[colorscaleType]).map((x, i) => (
+              <Colorscale
+                key={i}
+                onClick={onClick}
+                colorscale={BUILTINS[colorscaleType][x]}
+                label={x}
+                scaleLength={BUILTINS[colorscaleType][x].length}
+              />
+            ))}
+
           {BREWER.hasOwnProperty(colorscaleType) &&
             BREWER[colorscaleType].map((x, i) => (
               <Colorscale
                 key={i}
                 onClick={onClick}
-                colorscale={chroma
-                  .scale(x)
-                  .colors(scaleLength || DEFAULT_NPREVIEWCOLORS)}
+                colorscale={chroma.brewer[x]}
                 label={x}
-                scaleLength={scaleLength}
+                scaleLength={chroma.brewer[x].length}
               />
             ))}
 
@@ -456,12 +469,9 @@ export class ColorscalePaletteSelector extends Component {
               <Colorscale
                 key={i}
                 onClick={onClick}
-                colorscale={CMOCEAN[x].slice(
-                  0,
-                  scaleLength || DEFAULT_NPREVIEWCOLORS
-                )}
+                colorscale={CMOCEAN[x]}
                 label={x}
-                scaleLength={scaleLength}
+                scaleLength={CMOCEAN[x].length}
               />
             ))}
 

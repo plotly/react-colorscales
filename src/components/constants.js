@@ -28,24 +28,24 @@ export const COLORSCALE_DESCRIPTIONS = {
 
 export const BREWER = {
   sequential: [
-    "OrRd",
-    "PuBu",
-    "BuPu",
-    "Oranges",
-    "BuGn",
-    "YlOrBr",
-    "YlGn",
-    "Reds",
-    "RdPu",
-    "Greens",
-    "YlGnBu",
     "Purples",
-    "GnBu",
-    "Greys",
-    "YlOrRd",
-    "PuRd",
     "Blues",
-    "Viridis"
+    "Greens",
+    "Oranges",
+    "Reds",
+    "YlOrBr",
+    "YlOrRd",
+    "OrRd",
+    "PuRd",
+    "RdPu",
+    "BuPu",
+    "PuBu",
+    "PuBuGn",
+    "GnBu",
+    "BuGn",
+    "YlGnBu",
+    "YlGn",
+    "Greys"
   ],
   divergent: [
     "Spectral",
@@ -57,7 +57,87 @@ export const BREWER = {
     "BrBG",
     "RdGy"
   ],
-  categorical: ["Accent", "Set1", "Set3", "Dark2", "Paired", "Pastel1"]
+  categorical: ["Set1", "Pastel1", "Dark2", "Set2", "Pastel2", "Set3"]
+};
+
+export const BUILTINS = {
+  sequential: {
+    Viridis: [
+      "#440154",
+      "#482878",
+      "#3e4989",
+      "#31688e",
+      "#26828e",
+      "#1f9e89",
+      "#35b779",
+      "#6ece58",
+      "#b5de2b",
+      "#fde725"
+    ],
+
+    Inferno: [
+      "#000004",
+      "#1b0c41",
+      "#4a0c6b",
+      "#781c6d",
+      "#a52c60",
+      "#cf4446",
+      "#ed6925",
+      "#fb9b06",
+      "#f7d13d",
+      "#fcffa4"
+    ],
+    Magma: [
+      "#000004",
+      "#180f3d",
+      "#440f76",
+      "#721f81",
+      "#9e2f7f",
+      "#cd4071",
+      "#f1605d",
+      "#fd9668",
+      "#feca8d",
+      "#fcfdbf"
+    ],
+    Plasma: [
+      "#0d0887",
+      "#46039f",
+      "#7201a8",
+      "#9c179e",
+      "#bd3786",
+      "#d8576b",
+      "#ed7953",
+      "#fb9f3a",
+      "#fdca26",
+      "#f0f921"
+    ]
+  },
+  categorical: {
+    D3: [
+      "#1f77b4",
+      "#ff7f0e",
+      "#2ca02c",
+      "#d62728",
+      "#9467bd",
+      "#8c564b",
+      "#e377c2",
+      "#7f7f7f",
+      "#bcbd22",
+      "#17becf"
+    ],
+    G10: [
+      "#3366cc",
+      "#dc3912",
+      "#ff9900",
+      "#109618",
+      "#990099",
+      "#0099c6",
+      "#dd4477",
+      "#66aa00",
+      "#b82e2e",
+      "#316395"
+    ]
+  }
 };
 
 export const CMOCEAN = {
@@ -332,7 +412,7 @@ export const DEFAULT_HUE = 1;
 export const DEFAULT_GAMMA = 1;
 export const DEFAULT_LIGHTNESS = [0.85, 0.15];
 export const DEFAULT_NCOLORS = 10;
-export const DEFAULT_SWATCHES = 6;
+export const DEFAULT_SWATCHES = 9;
 export const DEFAULT_SCALE = chroma
   .scale(["#fafa6e", "#2A4858"])
   .mode("lch")
@@ -340,4 +420,4 @@ export const DEFAULT_SCALE = chroma
 export const DEFAULT_LOG_BREAKPOINTS = 4;
 export const DEFAULT_BREAKPOINTS = [0, 1];
 export const DEFAULT_SWATCH_WIDTH = 20;
-export const DEFAULT_NPREVIEWCOLORS = 9;
+export const DEFAULT_NPREVIEWCOLORS = 10;
