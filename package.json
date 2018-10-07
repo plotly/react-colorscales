@@ -3,6 +3,7 @@
   "version": "0.7.2",
   "description": "A React component for picking colorscales based on Chroma.js",
   "main": "build/index.js",
+  "files": ["build/index.js"],
   "scripts": {
     "start": "webpack-dev-server --hot",
     "build": "node ./scripts/build.js",
