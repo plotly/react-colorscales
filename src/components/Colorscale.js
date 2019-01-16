@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
-import {
-  DEFAULT_SCALE,
-} from './constants.js';
+import {DEFAULT_SCALE} from './constants.js';
 
 export default class Colorscale extends Component {
   render() {
-    const scale = this.props.colorscale
-      ? this.props.colorscale : DEFAULT_SCALE;
-
+    const scale = this.props.colorscale ? this.props.colorscale : DEFAULT_SCALE;
 
     return (
-      <div style={{width: '100%'}}>
+      <div style={{width: '100%'}} className="colorscale-container">
         {this.props.label ? (
           <div
+            className="colorscale-label"
             style={{
               fontWeight: 600,
               fontSize: '12px',
@@ -26,10 +23,11 @@ export default class Colorscale extends Component {
           </div>
         ) : null}
         <div
+          className="colorscale-palette-container"
           style={{
             display: 'inline-block',
             textAlign: 'start',
-            width: "75%",
+            width: this.props.label ? '75%' : '100%',
           }}
         >
           <div
@@ -37,11 +35,9 @@ export default class Colorscale extends Component {
             style={{
               fontSize: '0px',
               display: 'inline-block',
-              width: "100%"
+              width: '100%',
             }}
-            onClick={() =>
-              this.props.onClick(scale, this.props.start, this.props.rot)
-            }
+            onClick={() => this.props.onClick(scale, this.props.start, this.props.rot)}
           >
             {scale.map((x, i) => (
               <div
@@ -49,7 +45,7 @@ export default class Colorscale extends Component {
                 className="colorscale-swatch"
                 style={{
                   backgroundColor: x,
-                  width: ""+(100.0/scale.length)+'%',
+                  width: '' + 100.0 / scale.length + '%',
                   height: '20px',
                   margin: '0 auto',
                   display: 'inline-block',
