@@ -4,7 +4,6 @@ import chroma from 'chroma-js';
 import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import Select from 'react-select';
-import 'react-select/dist/react-select.css';
 import 'rc-slider/assets/index.css';
 
 import {
