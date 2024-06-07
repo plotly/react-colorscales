@@ -1,5 +1,11 @@
 # React colorscales 🌈
 
+<div align="center">
+  <a href="https://dash.plotly.com/project-maintenance">
+    <img src="https://dash.plotly.com/assets/images/maintained-by-plotly.png" width="400px" alt="Maintained by Plotly">
+  </a>
+</div>
+
 A React UI component for picking and modifying colorscales, based on [Chroma-js](https://gka.github.io/chroma.js/).
 
 Part of Plotly's [React Component Suite](https://plot.ly/products/react/) for building data visualization Web apps and products.
